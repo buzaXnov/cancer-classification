@@ -2,6 +2,7 @@ import logging
 import logging.config
 import os
 from pathlib import Path
+from typing import Union
 
 logging.basicConfig(level=logging.INFO, format="[%(asctime)s]: %(message)s:")
 
@@ -25,6 +26,8 @@ list_of_files = [
     "research/trials.ipynb",
     "templates/index.html",
 ]
+
+filepath: Union[str, Path]
 
 for filepath in list_of_files:
 

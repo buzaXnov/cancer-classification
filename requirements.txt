@@ -1,1 +1,21 @@
 torch
+mlflow
+pandas
+gdown
+dvc
+notebook
+numpy
+matplotlib
+seaborn
+PyYAML
+tqdm
+python-box
+ensure
+joblib
+types-PyYAML
+scipy
+# not using Tensorflow, using pytorch
+# will use streamlit
+# Flask
+# Flask-Cors
+-e . # setup.py code
