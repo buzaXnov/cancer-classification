@@ -30,7 +30,7 @@ Link to PyTorch model: https://pytorch.org/vision/main/models/generated/torchvis
 Since you shouldn't be posting your password and tracking username for mlflow, you should look into secrets.yaml file. 
 
 Q: Freezing layers means that frozen layers will not be trained? 
-
+Q: Shouldn't my last layer be a softmax activation function? 
 
 TODO: 
 1. Implement quantized transfer learning after the entire project is completed: 
