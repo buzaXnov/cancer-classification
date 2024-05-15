@@ -31,9 +31,29 @@ Since you shouldn't be posting your password and tracking username for mlflow, y
 
 Q: Freezing layers means that frozen layers will not be trained? 
 Q: Shouldn't my last layer be a softmax activation function? 
+Q: Why do we use Dagshub for mlflow? 
 
 TODO: 
 1. Implement quantized transfer learning after the entire project is completed: 
 https://pytorch.org/tutorials/intermediate/quantized_transfer_learning_tutorial.html
 
-2. Trying playing around with the last layers, the numbers and sizes of them. 
+2. Trying playing around with the last layers, the numbers and sizes of them. (implement vgg16_bn model?)
+Define the augmentations and right image size for my model and dataset. 
+
+
+### mlflow experiment tracking with dahshub
+[dagshub](https://dagshub.com)
+
+MLFLOW_TRACKING_URI=https://dagshub.com/buzaXnov/cancer-classification.mlflow \
+MLFLOW_TRACKING_USERNAME=buzaXnov \
+MLFLOW_TRACKING_PASSWORD=c2f97b6e1897763abc2b78d3781adbbf30ba2026 \
+python script.py
+
+Run this to export as env variables:
+```bash
+export MLFLOW_TRACKING_URI=https://dagshub.com/buzaXnov/cancer-classification.mlflow
+
+export MLFLOW_TRACKING_USERNAME=buzaXnov
+
+export MLFLOW_TRACKING_PASSWORD=c2f97b6e1897763abc2b78d3781adbbf30ba2026
+```

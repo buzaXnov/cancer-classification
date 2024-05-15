@@ -4,6 +4,7 @@ from pathlib import Path
 from cnnClassifier.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from cnnClassifier.entity.config_entity import (
     DataIngestionConfig,
+    EvaluationConfig,
     PrepareBaseModelConfig,
     TrainingConfig,
 )
@@ -73,3 +74,19 @@ class ConfigurationManager:
         )
 
         return training_config
+
+    def get_eval_config(self) -> EvaluationConfig:
+        training = self.config.training
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Data")
+        model_path = os.path.join(training.checkpoints_dir, "best.pt")
+
+        eval_config = EvaluationConfig(
+            path_of_model=model_path,
+            training_data=training_data,
+            all_params=self.params,
+            mlflow_uri=os.getenv("MLFLOW_TRACKING_URI"),
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+
+        return eval_config

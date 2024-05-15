@@ -142,6 +142,9 @@ class Training:
             # Step the scheduler
             scheduler.step()
 
+        # save the model with the best val accuracy as best.pt for inference
+        torch.save(self.model, os.path.join(self.config.checkpoints_dir, "best.pt"))
+
     def validate(self):
         self.model.eval()
         total, correct = 0, 0
@@ -166,5 +169,6 @@ class Training:
                 _, predicted = torch.max(outputs, 1)
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
-        test_accuracy = 100 * correct / total
+        test_accuracy = 100 * correct / total        
         print(f"Test Accuracy: {test_accuracy}%")
+        return test_accuracy
