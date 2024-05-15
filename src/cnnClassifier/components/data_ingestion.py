@@ -26,12 +26,15 @@ class DataIngestion:
 
             file_id = dataset_url.split("/")[-2]
 
-            prefix = "https://drive.google.com/uc?/export=download&id="
-            gdown.download(url=prefix + file_id, output=zip_download_dir)
+            if os.path.exists(zip_download_dir):
+                logger.info("Data already downloaded. Download stopped.")
+            else:
+                prefix = "https://drive.google.com/uc?/export=download&id="
+                gdown.download(url=prefix + file_id, output=zip_download_dir)
 
-            logger.info(
-                f"Downloaded data from {dataset_url} into file {zip_download_dir}"
-            )
+                logger.info(
+                    f"Downloaded data from {dataset_url} into file {zip_download_dir}"
+                )
 
         except Exception as e:
             raise e

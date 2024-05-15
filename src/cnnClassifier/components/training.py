@@ -18,7 +18,7 @@ class Training:
 
     def get_base_model(self):
         """Download the base model."""
-        self.model = torch.load(self.config.updated_model_path)
+        self.model = torch.load(self.config.updated_model_path).to(self.device)
         # NOTE: model.eval() for inference later on, not before training
 
     def get_dataloaders(self):
@@ -110,10 +110,10 @@ class Training:
 
         num_epochs = self.config.params_epochs
 
+        best_val_accuracy = 0.0
         for epoch in tqdm(range(num_epochs)):
             self.model.train()
             running_loss = 0.0
-            best_val_accuracy = 0.0
 
             for inputs, labels in tqdm(self.train_loader):
                 inputs, labels = inputs.to(self.device), labels.to(self.device)
