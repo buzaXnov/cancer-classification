@@ -16,7 +16,7 @@ class EvaluationPipeline:
         evaluation.get_trained_model()
         evaluation.get_dataloader()
         evaluation.test()
-        evaluation.log_into_mlflow()
+        # evaluation.log_into_mlflow()  # TODO: uncomment
         evaluation.save_score()        
 
 
